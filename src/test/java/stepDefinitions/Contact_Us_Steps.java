@@ -66,18 +66,18 @@ public class Contact_Us_Steps {
     }
 //--------
     @When("I enter a specific first name {word}")
-    public void i_enter_a_specific_first_name_joe(String firstName) {
+    public void i_enter_a_specific_first_name(String firstName) {
         driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys(firstName);
     }
 
     @When("I enter a specific last name {word}")
-    public void i_enter_a_specific_last_name_blogs(String lastName) {
+    public void i_enter_a_specific_last_name(String lastName) {
         driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys(lastName);
 
     }
 
     @When("I enter a specific email address {word}")
-    public void i_enter_a_specific_email_address_joe_blogs123_mail_com(String email) {
+    public void i_enter_a_specific_email_address(String email) {
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys(email);
     }
 
