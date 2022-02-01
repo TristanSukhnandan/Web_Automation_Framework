@@ -1,3 +1,5 @@
+@contact-us
+
 Feature: WebDriver University - Contact Us Page
 
   Scenario: Validate successful submission - Unique data
