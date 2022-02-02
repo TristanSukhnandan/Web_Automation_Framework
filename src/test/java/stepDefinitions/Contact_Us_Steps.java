@@ -1,53 +1,28 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import pageObjects.Base_PO;
 
-public class Contact_Us_Steps {
-    private WebDriver driver;
+public class Contact_Us_Steps extends Base_PO {
 
-    @Before("@contact-us")
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
-    }
-
-    @After("@contact-us")
-    public void teardown(){
-        driver.quit();
-    }
-
-    public String generateRandomNumber(int length){
-        return RandomStringUtils.randomNumeric(length);
-    }
-
-    public String generateRandomString(int length){
-        return RandomStringUtils.randomAlphabetic(length);
-    }
+    private WebDriver driver = getDriver();
 
     @Given("I access the webdriver university contact us page")
     public void i_access_the_webdriver_university_contact_us_page() {
-        driver.get("https://www.webdriveruniversity.com/Contact-Us/contactus.html");
+        navigateTo_URL("https://www.webdriveruniversity.com/Contact-Us/contactus.html");
     }
 
     @When("I enter a unique first name")
     public void i_enter_a_unique_first_name() {
-        driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys("AutoFN" + generateRandomNumber(5));
+        //driver.findElement(By.xpath("//input[@name='first_name']")).sendKeys("AutoFN" + generateRandomNumber(5));
+        sendKeys(By.xpath("//input[@name='first_name']"),"AutoFN" + generateRandomNumber(5));
     }
 
     @And("I enter a unique last name")
